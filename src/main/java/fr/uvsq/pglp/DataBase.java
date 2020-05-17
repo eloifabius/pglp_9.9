@@ -14,7 +14,7 @@ public abstract class DataBase {
     public static Connection createBase() {
         try {
             return DriverManager.getConnection(
-                    "jdbc:derby:DataForme;create=true");
+                    "jdbc:derby://localhost:1527/draw_app_db;create=true");
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
