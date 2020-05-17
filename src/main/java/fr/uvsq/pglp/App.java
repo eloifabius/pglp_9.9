@@ -34,7 +34,7 @@ public class App {
         DataBase.deleteAllTables(connect);
         DataBase.createAllTables(connect);
         connect.close();
-        DrawingApp da = new DrawingApp();
+        DrawingApp da = new App();
         da.run();
     }
     /**
