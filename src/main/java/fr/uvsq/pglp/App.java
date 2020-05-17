@@ -20,7 +20,7 @@ public class App {
     /**
      * Constructeur.
      */
-    public DrawingApp() {
+    public App() {
         this.scanner = new Scanner(System.in);
         dt = new DrawingTUI();
     }
@@ -34,7 +34,7 @@ public class App {
         DataBase.deleteAllTables(connect);
         DataBase.createAllTables(connect);
         connect.close();
-        DrawingApp da = new App();
+        App da = new App();
         da.run();
     }
     /**
