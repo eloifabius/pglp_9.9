@@ -1,4 +1,7 @@
-package fr.uvsq.pglp;
+package fr.uvsq.database;
+
+import fr.uvsq.forms.Triangle;
+import fr.uvsq.position.Position;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

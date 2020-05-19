@@ -1,4 +1,10 @@
-package fr.uvsq.pglp;
+package fr.uvsq.database;
+
+import fr.uvsq.forms.Carre;
+import fr.uvsq.forms.Cercle;
+import fr.uvsq.forms.Rectangle;
+import fr.uvsq.forms.Triangle;
+import fr.uvsq.forms.Groupe;
 
 import java.sql.Connection;
 

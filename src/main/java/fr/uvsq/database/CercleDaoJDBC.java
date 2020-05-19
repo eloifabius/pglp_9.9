@@ -1,4 +1,7 @@
-package fr.uvsq.pglp;
+package fr.uvsq.database;
+
+import fr.uvsq.forms.Cercle;
+import fr.uvsq.position.Position;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,70 +9,67 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class RectangleDaoJDBC extends AbstractDao<Rectangle> {
+public class CercleDaoJDBC extends AbstractDao<Cercle> {
     /**
      * Constructeur.
      * @param c Le connecteur
      */
-    public RectangleDaoJDBC(final Connection c) {
+    public CercleDaoJDBC(final Connection c) {
         this.connect = c;
     }
     /**
-     * Ajoute un Rectangle.
-     * @param r Le Rectangle a ajouter
+     * Ajoute un Cercle.
+     * @param c Le Cercle a ajouter
      */
     @Override
-    public Rectangle create(final Rectangle r) {
+    public Cercle create(final Cercle c) {
         try {
             final int un = 1;
             final int deux = 2;
             final int trois = 3;
             final int quatre = 4;
-            final int cinq = 5;
             PreparedStatement prepare = connect.prepareStatement(
                     "INSERT INTO Forme (Nom)"
                     + "VALUES (?)");
-            prepare.setString(un, r.getNom());
+            prepare.setString(un, c.getNom());
             int result = prepare.executeUpdate();
             prepare = connect.prepareStatement(
-                    "INSERT INTO Rectangle (Nom,Centre_X,Centre_Y,"
-                    + "Longueur, Hauteur)"
-                    + "VALUES (?,?,?,?,?)");
-            prepare.setString(un, r.getNom());
-            prepare.setInt(deux, r.getCentre().getX());
-            prepare.setInt(trois, r.getCentre().getY());
-            prepare.setInt(quatre, r.getLongueur());
-            prepare.setInt(cinq, r.getHauteur());
+                    "INSERT INTO Cercle (Nom,Centre_X,Centre_Y,"
+                    + "Rayon)"
+                    + "VALUES (?,?,?,?)");
+            prepare.setString(un, c.getNom());
+            prepare.setInt(deux, c.getCentre().getX());
+            prepare.setInt(trois, c.getCentre().getY());
+            prepare.setInt(quatre, c.getRayon());
             result = prepare.executeUpdate();
             assert result == un;
-            System.out.println("Rectangle créé");
+            System.out.println("Cercle créé");
         } catch (SQLException e) {
             return null;
         }
-        return r;
+        return c;
     }
     /**
-     * Retourne le Rectangle recherché.
-     * @param nom Le nom du Rectangle
-     * @return Le Rectangle trouvé
+     * Retourne le cercle recherché.
+     * @param nom Le nom du cercle
+     * @return Le cercle trouvé
      */
     @Override
-    public Rectangle find(final String nom) {
-        Rectangle r = null;
+    public Cercle find(final String nom) {
+        Cercle c = null;
         try {
             final int un = 1;
             PreparedStatement prepare = connect.prepareStatement(
-                    "SELECT * FROM Rectangle WHERE Nom = ?");
+                    "SELECT * FROM Cercle WHERE Nom = ?");
             prepare.setString(un, nom);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
                 try {
-                    r = new Rectangle(
+                    c = new Cercle(
                         result.getString("Nom"),
                         new Position(result.getInt("Centre_X"),
                         result.getInt("Centre_Y")),
-                        result.getInt("Longueur"),
-                        result.getInt("Hauteur")
+                        result.getInt("Rayon")
                         );
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -80,82 +80,79 @@ public class RectangleDaoJDBC extends AbstractDao<Rectangle> {
             e.printStackTrace();
             return null;
         }
-        return r;
+        return c;
     }
     /**
-     * Retourne tous les Rectangles.
-     * @return Les Rectangles trouvés
+     * Retourne tous les Cercles.
+     * @return Les cercles trouvés
      */
     @Override
-    public ArrayList<Rectangle> findAll() {
-        ArrayList<Rectangle> r = new ArrayList<Rectangle>();
+    public ArrayList<Cercle> findAll() {
+        ArrayList<Cercle> c = new ArrayList<Cercle>();
         try {
             PreparedStatement prepare = connect.prepareStatement(
-                    "SELECT Nom FROM Rectangle");
+                    "SELECT Nom FROM Cercle");
             ResultSet result = prepare.executeQuery();
             while (result.next()) {
-                r.add(find(result.getString("Nom")));
+                c.add(find(result.getString("Nom")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ArrayList<Rectangle>();
+            return new ArrayList<Cercle>();
         }
-        return r;
+        return c;
     }
     /**
-     * Modifie un Rectangle.
-     * @param r Le Rectangle a modifier
+     * Modifie un cercle.
+     * @param c Le cercle a modifier
      */
     @Override
-    public Rectangle update(final Rectangle r) {
-        Rectangle r2 = this.find(r.getNom());
-        if (r2 != null) {
+    public Cercle update(final Cercle c) {
+        Cercle c2 = this.find(c.getNom());
+        if (c2 != null) {
             try {
                 final int un = 1;
                 final int deux = 2;
                 final int trois = 3;
                 final int quatre = 4;
-                final int cinq = 5;
                 PreparedStatement prepare = connect.prepareStatement(
-                        "UPDATE Rectangle SET Centre_X = ?,"
-                        + "Centre_Y = ?, Longueur = ?, Hauteur = ?"
-                        + " WHERE Nom = ?");
-                prepare.setString(cinq, r.getNom());
-                prepare.setInt(un, r.getCentre().getX());
-                prepare.setInt(deux, r.getCentre().getY());
-                prepare.setInt(trois, r.getLongueur());
-                prepare.setInt(quatre, r.getHauteur());
+                        "UPDATE Cercle SET Centre_X = ?,"
+                        + "Centre_Y = ?, Rayon = ? WHERE Nom = ?");
+                prepare.setString(quatre, c.getNom());
+                prepare.setInt(un, c.getCentre().getX());
+                prepare.setInt(deux, c.getCentre().getY());
+                prepare.setInt(trois, c.getRayon());
                 int result = prepare.executeUpdate();
                 assert result == 1;
-                System.out.println("Rectangle deplacé");
+                System.out.println("Cercle deplacé");
             } catch (SQLException e) {
                 e.printStackTrace();
-                return r2;
+                return c2;
             }
         } else {
-            return r2;
+            return c2;
         }
-        return r;
+        return c;
     }
     /**
-     * Retire un Rectangle.
-     * @param r Le Rectangle a retirer
+     * Retire un cercle.
+     * @param c Le cercle a retirer
      */
     @Override
-    public void delete(final Rectangle r) {
+    public void delete(final Cercle c) {
         final int un = 1;
         try {
-            GroupeFormeDaoJDBC.deleteFormeGroupe(connect, r.getNom());
+            GroupeFormeDaoJDBC.deleteFormeGroupe(connect, c.getNom());
             PreparedStatement prepare = connect.prepareStatement(
-                    "DELETE FROM Rectangle WHERE Nom = ?");
-            prepare.setString(1, r.getNom());
+                    "DELETE FROM Cercle WHERE Nom = ?");
+            prepare.setString(1, c.getNom());
             int result = prepare.executeUpdate();
             prepare = connect.prepareStatement(
                     "DELETE FROM Forme WHERE Nom = ?");
-            prepare.setString(1, r.getNom());
+            prepare.setString(1, c.getNom());
             result = prepare.executeUpdate();
             assert result == un;
-            System.out.println("Triangle supprimé");
+            System.out.println("Cercle supprimé");
         } catch (SQLException e) {
             e.printStackTrace();
         }

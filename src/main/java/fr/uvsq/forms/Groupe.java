@@ -1,4 +1,6 @@
-package fr.uvsq.pglp;
+package fr.uvsq.forms;
+
+import fr.uvsq.forms.Forme;
 
 import java.util.ArrayList;
 import java.util.Iterator;

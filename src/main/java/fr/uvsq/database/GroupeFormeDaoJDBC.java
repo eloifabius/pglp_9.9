@@ -1,4 +1,7 @@
-package fr.uvsq.pglp;
+package fr.uvsq.database;
+
+import fr.uvsq.database.*;
+import fr.uvsq.forms.Forme;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

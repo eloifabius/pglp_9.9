@@ -1,4 +1,4 @@
-package fr.uvsq.pglp;
+package fr.uvsq.position;
 
 public class Position {
     /**

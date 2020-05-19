@@ -1,4 +1,6 @@
-package fr.uvsq.pglp;
+package fr.uvsq.forms;
+
+import fr.uvsq.position.Position;
 
 public class Triangle extends Forme {
     /**

@@ -1,34 +1,16 @@
-package fr.uvsq.pglp;
+package fr.uvsq.forms;
 
-public class Cercle extends Forme {
+import fr.uvsq.position.Position;
+
+public class Carre extends Forme {
     /**
      * La position du centre.
      */
     private Position centre;
     /**
-     * Le rayon du cercle.
+     * La longueur d'un coté du carré.
      */
-    private int rayon;
-    /**
-     * Getter du rayon.
-     * @return Le rayon
-     */
-    public int getRayon() {
-        return rayon;
-    }
-    /**
-     * Setter du rayon.
-     * @param r Le nouveau rayon
-     * @throws Exception Rayon négatif
-     */
-    public void setRayon(final int r) throws Exception {
-        if (r >= 0) {
-            this.rayon = r;
-        } else {
-            System.err.println("Rayon négatif");
-            throw new Exception();
-        }
-    }
+    private int longueur;
     /**
      * Getter du centre.
      * @return Le centre
@@ -44,17 +26,37 @@ public class Cercle extends Forme {
         this.centre = c.clone();
     }
     /**
+     * Getter de la longueur.
+     * @return La longueur
+     */
+    public int getLongueur() {
+        return longueur;
+    }
+    /**
+     * Setter de la longueur.
+     * @param l La nouvelle longueur
+     * @throws Exception Longueur négative
+     */
+    public void setLongueur(final int l) throws Exception {
+        if (l >= 0) {
+            this.longueur = l;
+        } else {
+            System.err.println("Longueur négative");
+            throw new Exception();
+        }
+    }
+    /**
      * Constructeur.
      * @param n Le nom
      * @param p La position initiale
-     * @param r Le rayon
-     * @throws Exception Rayon negatif
+     * @param l La longueur initiale
+     * @throws Exception Longueur négative
      */
-    public Cercle(final String n, final Position p, final int r)
+    public Carre(final String n, final Position p, final int l)
             throws Exception {
         setNom(n);
         this.centre = p.clone();
-        setRayon(r);
+        setLongueur(l);
     }
     /**
      * Fonction de déplacement.
@@ -70,7 +72,7 @@ public class Cercle extends Forme {
      */
     @Override
     public void draw() {
-        System.out.println("Cercle(centre=(" + centre.getX()
-        + "," + centre.getY() + "),rayon=" + rayon + ")");
+        System.out.println("Carre(centre=(" + centre.getX()
+        + "," + centre.getY() + "),longueur=" + longueur + ")");
     }
 }

@@ -1,4 +1,14 @@
-package fr.uvsq.pglp;
+package fr.uvsq.commands;
+
+import fr.uvsq.database.CarreDaoJDBC;
+import fr.uvsq.database.DataBase;
+import fr.uvsq.database.RectangleDaoJDBC;
+import fr.uvsq.database.TriangleDaoJDBC;
+import fr.uvsq.forms.*;
+import fr.uvsq.database.CercleDaoJDBC;
+import fr.uvsq.database.FactoryDaoJDBC;
+import fr.uvsq.forms.Groupe;
+import fr.uvsq.database.GroupeDaoJDBC;
 
 import java.sql.Connection;
 import java.sql.SQLException;

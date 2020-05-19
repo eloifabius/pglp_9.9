@@ -1,4 +1,4 @@
-package fr.uvsq.pglp;
+package fr.uvsq.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

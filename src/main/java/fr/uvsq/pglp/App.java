@@ -1,5 +1,9 @@
 package fr.uvsq.pglp;
 
+import fr.uvsq.commands.Command;
+import fr.uvsq.commands.DrawingTUI;
+import fr.uvsq.database.DataBase;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;

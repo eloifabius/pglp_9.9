@@ -1,4 +1,8 @@
-package fr.uvsq.pglp;;
+package fr.uvsq.commands;;
+
+import fr.uvsq.database.*;
+import fr.uvsq.forms.*;
+import fr.uvsq.position.Position;
 
 import java.sql.Connection;
 import java.sql.SQLException;
