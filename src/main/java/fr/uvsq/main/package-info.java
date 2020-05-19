@@ -1,4 +1,4 @@
 /**
  * Package info.
  */
-package fr.uvsq.pglp;
+package fr.uvsq.main;

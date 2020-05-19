@@ -1,4 +1,4 @@
-package fr.uvsq.pglp;
+package fr.uvsq.main;
 
 import fr.uvsq.commands.Command;
 import fr.uvsq.commands.DrawingTUI;
