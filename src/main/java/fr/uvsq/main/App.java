@@ -45,7 +45,9 @@ public class App {
      * Execute le programme.
      */
     public void run() {
-        System.out.println("Exemples de commandes valides :\n"
+        System.out.println("L O G I C I E L   D E   D E S S I N :\n\n"
+                + "------------------------------\n\n"
+                + "Liste de commandes :\n"
                 + "Creation : \n"
                 + "c1 = Cercle((0, 0), 50)\n"
                 + "c2 = Carre((0, 0), 30)\n"
@@ -55,7 +57,8 @@ public class App {
                 + "Déplacement : move(c1, (10, 20))\n"
                 + "Suppression : delete(r1, t1)\n"
                 + "Quitter : exit\n\n"
-                + "Entrer une commande :");
+                + "------------------------------\n\n"
+                + "En attente de commande :\n");
         String command = scanner.nextLine();
         Command c;
         while (!command.equals("exit")) {
@@ -64,7 +67,7 @@ public class App {
                 c.execute();
                 dt.drawAllCommand();
             }
-            System.out.println("\nEntrer une nouvelle commande :");
+            System.out.println("\nEn attente de commande :");
             command = scanner.nextLine();
         }
     }
