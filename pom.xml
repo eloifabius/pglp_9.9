@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>fr.uvsq.pglp</groupId>
-  <artifactId>pgl5.1</artifactId>
+  <artifactId>pgl9.9</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
   <name>pgl9.9</name>
@@ -23,6 +23,17 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derby</artifactId>
+      <version>10.14.2.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
+    <dependency>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derbyclient</artifactId>
+      <version>10.15.2.0</version>
     </dependency>
   </dependencies>
 

@@ -23,8 +23,7 @@ public class DrawingTUI {
         final int trois = 3;
         String[] split2 = split[1].split("Cercle");
         if (!split2[0].equals("")) {
-            System.err.println("Commande invalide");
-        }
+            System.err.println("Commande invalide");        }
         if (split2[1].startsWith("(") && split2[1].endsWith(")")) {
             split2[1] = split2[1].substring(1,
                     split2[1].length() - 1);

@@ -12,7 +12,7 @@ import java.util.Scanner;
  * Classe DrawingApp.
  *
  */
-public class App {
+public class DrawingAPP {
     /**
      * Scanner.
      */
@@ -24,7 +24,7 @@ public class App {
     /**
      * Constructeur.
      */
-    public App() {
+    public DrawingAPP() {
         this.scanner = new Scanner(System.in);
         dt = new DrawingTUI();
     }
@@ -38,7 +38,7 @@ public class App {
         DataBase.deleteAllTables(connect);
         DataBase.createAllTables(connect);
         connect.close();
-        App da = new App();
+        DrawingAPP da = new DrawingAPP();
         da.run();
     }
     /**
